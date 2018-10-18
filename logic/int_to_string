@@ -1,0 +1,56 @@
+#include<stdio.h>
+#include<string.h>
+
+void convertstring(char *s)
+{
+	int l=strlen(s);
+	char *one[]={"one","two","three","four","five","six","seven","eight","ninen"};
+	char *two[]={"","twenty","thirty","fourty","fifty","sixty","seventy","eighty","ninty"};
+	char *twos[]={"leven","twele","thirtien","fourtien","fiftien","sixtien","seventien","eightien","nintien"};
+	
+	while(l!=0)
+	{
+		if(l==1)
+		{
+			if(*s!=48)
+			{
+				printf("%s ",one[*s-'0'-1]);	
+			}
+			l--;
+		}	
+		else
+		{
+			if(l==2)
+			{
+				if(*s!=48){
+				
+					if(*s==49)
+					{
+						printf("%s",twos[*++s-'0'-1]);
+						l--;
+					}	
+					else
+						printf("%s ",two[*s-'0'-1]);
+					
+				}
+				l--;
+			}
+			else{
+				if(l==3)
+				{
+					printf("%s ",one[*s-'0'-1]);
+					printf("hendered ");
+					l--;
+				}
+			}
+		}
+		++s;
+	}
+}
+int main()
+{
+	char val[3];
+	printf("Enter the value : ");
+	scanf("%s",&val);
+	convertstring(val);
+}
