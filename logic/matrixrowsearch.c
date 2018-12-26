@@ -1,51 +1,90 @@
 #include<stdio.h>
+#include<conio.h>
 #include<string.h>
 
 int main()
 {
-	char string[6][5]={"WELCO","METOZ","OHOCO","RPARA","TION"};
-	char s[10];
-	int i,j,flag=0,k;
+	char m[5][5]={"welco","metoz","ohoco","rpora","tion"};
 	
-	for(i=0;i<6;i++)
+	int i,j;
+	
+	for(i=0;i<5;i++)
 	{
 		for(j=0;j<5;j++)
 		{
-			printf("%c\t",string[i][j]);
+			printf("%c",m[i][j]);
 		}
 		printf("\n");
 	}
-	scanf("%s",&s);
+	char f[5];
+	printf("\n Enter the find word :");
+	scanf("%s",&f);
+	int c,sl=strlen(f);
 	
-	//search row 
-	for(i=0;i<6;i++)
+	for(i=0;i<5;i++)
 	{
 		for(j=0;j<5;j++)
 		{
-			if(string[i][j]==s[0])
+			if(m[i][j]==f[0])
 			{
-				int l=i,m=j;
-				for(k=0;k<strlen(s);k++)
+			
+				int k,t=j;
+				c=0;
+				for(k=0;k<sl;k++)
 				{
-					if(s[k]==string[l][m])
-						flag=1;
-					else
+					
+					if(f[k]!=m[i][t])
 					{
-						flag=0;
 						break;
 					}
-					
-					m++;
+					c++;
+					t++;
+				}
+				
+				if(c==sl)
+				{
+					printf("\n%s : find",f);
+					break;
 				}
 			}
-			if(flag)
-			break;
+			if(c==sl)
+				break;
 		}
-		if(flag)
-		break;
 	}
-	if(flag)
-		printf("find");
-	else
-	printf("not find");
+	
+	c=0;
+	for(i=0;i<5;i++)
+	{
+		for(j=0;j<5;j++)
+		{
+			if(m[j][i]==f[0])
+			{
+			
+				int k,t=j;
+				c=0;
+				for(k=0;k<sl;k++)
+				{
+					
+					if(f[k]!=m[t][i])
+					{
+						break;
+					}
+					c++;
+					t++;
+				}
+				
+				if(c==sl)
+				{
+					printf("\n%s : find",f);
+					break;
+				}
+			}
+			
+			
+			if(c==sl)
+				break;
+		}
+	}
+	
+	
 }
