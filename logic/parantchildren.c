@@ -43,3 +43,78 @@ printf("\nNo .of grandchildren of %s=%d",name,count);
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#include<stdio.h>
+#include<string.h>
+
+struct data{
+	char father[10];
+	char child[10];
+};
+
+
+struct data *po;
+
+int temp,k;
+
+int find(char t[10])
+{
+	int i;
+	for(i=0;i<k;i++)
+	{
+		if(strcmp(t,(po+i)->father)==0)
+		{
+			temp++;
+			find((po+i)->child);	
+		}		
+	}
+}
+
+int main()
+{
+	
+	
+	int i;
+	char st[10];
+	
+	printf("\n Enter the val:");
+	scanf("%d",&k);
+	
+	po=(struct data*)malloc(k*sizeof(struct data));
+	
+	for(i=0;i<k;i++)
+	{
+		printf("\n Enter the parent :");
+		scanf("%s",(po+i)->father);
+		printf("\n Enter the child :");
+		scanf("%s",(po+i)->child);
+	}
+	
+	for(i=0;i<k;i++)
+	{
+		printf("\n <' %s '  ' %s '>",(po+i)->father,(po+i)->child);
+	
+	}
+	
+	printf("\n search string:");
+	scanf("\n%s",st);
+	
+	find(st);
+	
+	printf("\n final :%d",temp);
+		
+}
